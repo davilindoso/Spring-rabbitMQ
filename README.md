@@ -1,2 +1,2 @@
 # rabbitMQ
-Aplicando SpringBoot + RabbitMQ in docker
+Aplicando SpringBoot + RabbitMQ
