@@ -1,9 +1,8 @@
 package com.com.springMQproducer.service;
 
-import com.com.springMQproducer.dto.Message;
+public interface AmqpService<T> {
 
-public interface AmqpService {
-
-	void sendToConsumer(Message message);
+	void sendToConsumer(T message);
+	
 
 }

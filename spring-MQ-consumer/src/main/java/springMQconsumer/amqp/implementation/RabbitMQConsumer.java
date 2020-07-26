@@ -16,7 +16,7 @@ public class RabbitMQConsumer implements AmqpConsumer<Message> {
 	private ConsumerService consumerService;
 
 	@Override
-	@RabbitListener(queues = "$spring.rabbitmq.request.routing-key.producer")
+	@RabbitListener(queues = "$spring.rabbitmq.routing-key.producer")
 	public void consumer(Message message) {
 		try {
 			consumerService.action(message);

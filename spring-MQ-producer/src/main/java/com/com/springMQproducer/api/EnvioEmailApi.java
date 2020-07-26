@@ -7,18 +7,18 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.com.springMQproducer.dto.Message;
+import com.com.springMQproducer.dto.Email;
 import com.com.springMQproducer.service.AmqpService;
 
 @RestController
-public class AmqpApi {
+public class EnvioEmailApi {
 
 	@Autowired
-	private AmqpService amqpService;
+	private AmqpService<Email> amqpService;
 
 	@ResponseStatus(HttpStatus.ACCEPTED)
 	@PostMapping("/send")
-	public void sendToConsumer(@RequestBody Message message) {
+	public void sendToConsumer(@RequestBody Email message) {
 		amqpService.sendToConsumer(message);
 	}
 

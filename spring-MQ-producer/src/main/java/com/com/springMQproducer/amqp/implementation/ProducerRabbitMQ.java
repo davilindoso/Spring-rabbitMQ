@@ -7,22 +7,21 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import com.com.springMQproducer.amqp.AmqpProducer;
-import com.com.springMQproducer.dto.Message;
 
 @Component
-public class ProducerRabbitMQ implements AmqpProducer<Message> {
+public class ProducerRabbitMQ<T> implements AmqpProducer<T> {
 
 	@Autowired
 	private RabbitTemplate rabbitTemplate;
 
-	@Value("$spring.rabbitmq.request.routing-key.producer")
+	@Value("${spring.rabbitmq.routing-key.producer}")
 	private String queue;
 
-	@Value("$spring.rabbitmq.request.exchange.producer")
+	@Value("${spring.rabbitmq.exchenge.producer}")
 	private String exchange;
 
 	@Override
-	public void producer(Message message) {
+	public void producer(T message) {
 		try {
 			rabbitTemplate.convertAndSend(exchange, queue, message);
 		} catch (Exception e) {

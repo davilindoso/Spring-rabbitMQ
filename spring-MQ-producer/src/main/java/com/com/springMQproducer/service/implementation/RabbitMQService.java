@@ -4,17 +4,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.com.springMQproducer.amqp.AmqpProducer;
-import com.com.springMQproducer.dto.Message;
 import com.com.springMQproducer.service.AmqpService;
 
 @Service
-public class RabbitMQService implements AmqpService {
+public class RabbitMQService<T> implements AmqpService<T> {
 
 	@Autowired
-	private AmqpProducer<Message> amqp;
+	private AmqpProducer<T> amqp;
 
 	@Override
-	public void sendToConsumer(Message message) {
+	public void sendToConsumer(T message) {
 		amqp.producer(message);
 	}
 }
